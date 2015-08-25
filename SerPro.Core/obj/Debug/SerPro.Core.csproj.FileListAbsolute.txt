@@ -1,0 +1,4 @@
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\SerPro.Core.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\SerPro.Core.pdb
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\obj\Debug\SerPro.Core.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\obj\Debug\SerPro.Core.pdb
