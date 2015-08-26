@@ -2,3 +2,4 @@ C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\bin\Debug\SerPro.DAL.dll
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\bin\Debug\SerPro.DAL.pdb
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\obj\Debug\SerPro.DAL.dll
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\obj\Debug\SerPro.DAL.pdb
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\obj\Debug\SerPro.DAL.csprojResolveAssemblyReference.cache
