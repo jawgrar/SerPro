@@ -79,26 +79,26 @@ namespace SerPro.API.Controllers
             user.LastName = createUserModel.LastName;
             user.JoinDate = DateTime.Now.Date;
 
-            if (createUserModel.RoleName == "User")
-            {
-                user.Level = 1;
-            }
-            else
-            {
-                user.Level = 2;
-            }
-
-            //var role = new IdentityRole { Name = createUserModel.RoleName };
-
-            //if (await this.AppRoleManager.FindByNameAsync(createUserModel.RoleName) == null)
+            //if (createUserModel.RoleName == "provider")
             //{
-            //    var roleResult = await this.AppRoleManager.CreateAsync(role);
-
-            //    if (!roleResult.Succeeded)
-            //    {
-            //        return GetErrorResult(roleResult);
-            //    }
+            //    user.Level = 1;
             //}
+            //else
+            //{
+            //    user.Level = 2;
+            //}
+
+            var role = new IdentityRole { Name = createUserModel.RoleName };
+
+            if (await this.AppRoleManager.FindByNameAsync(createUserModel.RoleName) == null)
+            {
+                var roleResult = await this.AppRoleManager.CreateAsync(role);
+
+                if (!roleResult.Succeeded)
+                {
+                    return GetErrorResult(roleResult);
+                }
+            }
 
 
             IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, createUserModel.Password);
@@ -109,12 +109,12 @@ namespace SerPro.API.Controllers
             }
 
             //Assign Role to user Here 
-            //var addToRoleResult = await this.AppUserManager.AddToRoleAsync(user.Id, role.Name.ToString());
+            var addToRoleResult = await this.AppUserManager.AddToRoleAsync(user.Id, role.Name.ToString());
 
-            //if (!addToRoleResult.Succeeded)
-            //{
-            //    return GetErrorResult(addToRoleResult);
-            //}
+            if (!addToRoleResult.Succeeded)
+            {
+                return GetErrorResult(addToRoleResult);
+            }
             //Ends Here
 
             //string code = await this.AppUserManager.GenerateEmailConfirmationTokenAsync(user.Id);

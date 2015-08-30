@@ -25,14 +25,14 @@ namespace SerPro.API.Infrastructure
             appUserManager.UserValidator = new UserValidator<UserMaster>(appUserManager)
             {
                 AllowOnlyAlphanumericUserNames = true,
-                RequireUniqueEmail = false
+                RequireUniqueEmail = true
             };
 
             // Configure validation logic for passwords
             appUserManager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = false,
+                RequireNonLetterOrDigit = true,
                 RequireDigit = false,
                 RequireLowercase = true,
                 RequireUppercase = true,
