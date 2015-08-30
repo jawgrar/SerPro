@@ -4,6 +4,9 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
     $scope.loginData = {
         userName: "",
         password: "",
+        level: "",
+        firstname: "",
+        lastname: "",
         useRefreshTokens: false
     };
 
@@ -12,8 +15,11 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
     $scope.login = function () {
 
         authService.login($scope.loginData).then(function (response) {
-
-            $location.path('/fileUpload');
+            if (response.level == '1') {
+                $location.path('/fileUpload');
+            } else {
+                $location.path('/orders');
+            }
 
         },
          function (err) {

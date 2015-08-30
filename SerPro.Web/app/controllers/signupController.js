@@ -1,6 +1,14 @@
 ﻿'use strict';
 app.controller('signupController', ['$scope', '$location', '$timeout', 'authService', function ($scope, $location, $timeout, authService) {
 
+    $scope.role = [{
+        id: '1',
+        name: 'User'
+    }, {
+        id: '2',
+        name: 'Provider'
+    }];
+
     $scope.savedSuccessfully = false;
     $scope.message = "";
 
@@ -10,8 +18,7 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         confirmPassword: "",
         firstName: "",
         lastName: "",
-        gender: "",
-        role: ""
+        roleName: ""
     };
 
     $scope.signUp = function () {

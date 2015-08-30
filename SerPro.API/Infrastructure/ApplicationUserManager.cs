@@ -25,7 +25,7 @@ namespace SerPro.API.Infrastructure
             appUserManager.UserValidator = new UserValidator<UserMaster>(appUserManager)
             {
                 AllowOnlyAlphanumericUserNames = true,
-                RequireUniqueEmail = true
+                RequireUniqueEmail = false
             };
 
             // Configure validation logic for passwords
@@ -37,7 +37,7 @@ namespace SerPro.API.Infrastructure
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
-            
+
             //appUserManager.EmailService = new AspNetIdentity.WebApi.Services.EmailService();
 
             var dataProtectionProvider = options.DataProtectionProvider;
@@ -49,7 +49,7 @@ namespace SerPro.API.Infrastructure
                     TokenLifespan = TimeSpan.FromHours(6)
                 };
             }
-           
+
             return appUserManager;
         }
     }
