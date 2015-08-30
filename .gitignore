@@ -228,3 +228,5 @@ packages/*
 # This line needs to be after the ignore of the build folder
 # (and the packages folder if the lines above for that has been uncommented)
 !/packages/build/
+*.cache
+*.cache
