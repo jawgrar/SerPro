@@ -23,6 +23,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/orders.html"
     });
 
+    $routeProvider.when("/fileUpload", {
+        controller: "fileUploadController",
+        templateUrl: "/app/views/fileUpload.html"
+    });
+
     $routeProvider.when("/refresh", {
         controller: "refreshController",
         templateUrl: "/app/views/refresh.html"
@@ -47,6 +52,8 @@ app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'ngAuthApp'
 });
+
+
 
 app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');

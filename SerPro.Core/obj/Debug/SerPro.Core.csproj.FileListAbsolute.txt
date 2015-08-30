@@ -2,3 +2,15 @@ C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\SerPro.Core.dll
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\SerPro.Core.pdb
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\obj\Debug\SerPro.Core.dll
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\obj\Debug\SerPro.Core.pdb
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\SerPro.Core.dll.config
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\EntityFramework.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\SerPro.DAL.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\SerPro.DAL.pdb
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\EntityFramework.xml
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.Core\obj\Debug\SerPro.Core.csprojResolveAssemblyReference.cache

@@ -3,3 +3,8 @@ C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\bin\Debug\SerPro.DAL.pdb
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\obj\Debug\SerPro.DAL.dll
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\obj\Debug\SerPro.DAL.pdb
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\obj\Debug\SerPro.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\bin\Debug\SerPro.DAL.dll.config
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.DAL\bin\Debug\EntityFramework.SqlServer.xml
