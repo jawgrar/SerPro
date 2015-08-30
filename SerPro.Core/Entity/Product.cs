@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SerPro.Core
+namespace SerPro.Core.Entity
 {
-    public class Class1
-    {
-    }
+    
 }

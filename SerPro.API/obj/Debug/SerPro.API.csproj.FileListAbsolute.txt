@@ -64,3 +64,15 @@ C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\Microsoft.Owin.Security.M
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\System.Web.Http.Owin.xml
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.dll
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.pdb
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\SerPro.Core.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\SerPro.Core.pdb
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\Microsoft.Owin.Security.Jwt.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\Thinktecture.IdentityModel.Core.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\Microsoft.Owin.Security.Jwt.xml
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\Thinktecture.IdentityModel.Core.pdb
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.Migrations.Initial.resources
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.csproj.GenerateResource.Cache
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.Migrations.Initial1.resources
