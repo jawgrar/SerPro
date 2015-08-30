@@ -1,5 +1,5 @@
 ﻿"use strict"
-app.factory("akFileUploaderService", ['$q', '$http', 'ngAuthSettings', function ($q, $http, ngAuthSettings) {
+app.factory("akFileUploaderService", ['$http', '$q', 'ngAuthSettings', function ($http, $q, ngAuthSettings) {
 
     var akFileUploaderService = {};
 
