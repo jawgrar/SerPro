@@ -18,48 +18,6 @@ namespace SerPro.API.Controllers
     public class AccountsController : BaseApiController
     {
 
-        [Authorize(Roles = "Admin")]
-        [Route("users")]
-        public IHttpActionResult GetUsers()
-        {
-            //Only SuperAdmin or Admin can delete users (Later when implement roles)
-            var identity = User.Identity as System.Security.Claims.ClaimsIdentity;
-
-            return Ok(this.AppUserManager.Users.ToList().Select(u => this.TheModelFactory.Create(u)));
-        }
-
-        [Authorize(Roles = "Admin")]
-        [Route("user/{id:guid}", Name = "GetUserById")]
-        public async Task<IHttpActionResult> GetUser(string Id)
-        {
-            //Only SuperAdmin or Admin can delete users (Later when implement roles)
-            var user = await this.AppUserManager.FindByIdAsync(Id);
-
-            if (user != null)
-            {
-                return Ok(this.TheModelFactory.Create(user));
-            }
-
-            return NotFound();
-
-        }
-
-        [Authorize(Roles = "Admin")]
-        [Route("user/{username}")]
-        public async Task<IHttpActionResult> GetUserByName(string username)
-        {
-            //Only SuperAdmin or Admin can delete users (Later when implement roles)
-            var user = await this.AppUserManager.FindByNameAsync(username);
-
-            if (user != null)
-            {
-                return Ok(this.TheModelFactory.Create(user));
-            }
-
-            return NotFound();
-
-        }
-
         [AllowAnonymous]
         [Route("create")]
         public async Task<IHttpActionResult> CreateUser(CreateUserBindingModel createUserModel)
@@ -74,31 +32,31 @@ namespace SerPro.API.Controllers
             var user = new UserMaster();
 
             user.UserName = createUserModel.Username;
-            user.Email = createUserModel.Email;
+            user.Email = createUserModel.Username;
             user.FirstName = createUserModel.FirstName;
             user.LastName = createUserModel.LastName;
             user.JoinDate = DateTime.Now.Date;
 
-            //if (createUserModel.RoleName == "provider")
-            //{
-            //    user.Level = 1;
-            //}
-            //else
-            //{
-            //    user.Level = 2;
-            //}
-
-            var role = new IdentityRole { Name = createUserModel.RoleName };
-
-            if (await this.AppRoleManager.FindByNameAsync(createUserModel.RoleName) == null)
+            if (createUserModel.RoleName == "Provider")
             {
-                var roleResult = await this.AppRoleManager.CreateAsync(role);
-
-                if (!roleResult.Succeeded)
-                {
-                    return GetErrorResult(roleResult);
-                }
+                user.Level = 1;
             }
+            else
+            {
+                user.Level = 2;
+            }
+
+            //var role = new IdentityRole { Name = createUserModel.RoleName };
+
+            //if (await this.AppRoleManager.FindByNameAsync(createUserModel.RoleName) == null)
+            //{
+            //    var roleResult = await this.AppRoleManager.CreateAsync(role);
+
+            //    if (!roleResult.Succeeded)
+            //    {
+            //        return GetErrorResult(roleResult);
+            //    }
+            //}
 
 
             IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, createUserModel.Password);
@@ -109,12 +67,12 @@ namespace SerPro.API.Controllers
             }
 
             //Assign Role to user Here 
-            var addToRoleResult = await this.AppUserManager.AddToRoleAsync(user.Id, role.Name.ToString());
+            //var addToRoleResult = await this.AppUserManager.AddToRoleAsync(user.Id, role.Name.ToString());
 
-            if (!addToRoleResult.Succeeded)
-            {
-                return GetErrorResult(addToRoleResult);
-            }
+            //if (!addToRoleResult.Succeeded)
+            //{
+            //    return GetErrorResult(addToRoleResult);
+            //}
             //Ends Here
 
             //string code = await this.AppUserManager.GenerateEmailConfirmationTokenAsync(user.Id);

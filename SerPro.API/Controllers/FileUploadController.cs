@@ -13,8 +13,22 @@ using System.Web.Http;
 namespace SerPro.API.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/FileUpload")]
     public class FilesController : ApiController
     {
+        [HttpPost]
+        [Route("saveFile")]
+        public async Task<IHttpActionResult> SaveFile(ItemModel itemModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok();
+        }
+
+
         [HttpPost] // This is from System.Web.Http, and not from System.Web.Mvc
         public async Task<HttpResponseMessage> Upload()
         {

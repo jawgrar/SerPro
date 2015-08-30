@@ -8,8 +8,8 @@ namespace SerPro.API.Models
 {
     public class CreateUserBindingModel
     {
-        [Required]
-        [EmailAddress]
+        //[Required]
+        //[EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

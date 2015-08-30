@@ -23,7 +23,9 @@ namespace SerPro.API.Providers
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
 
-            var allowedOrigin = "*";
+            var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
+
+            if (allowedOrigin == null) allowedOrigin = "*";
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
@@ -37,7 +39,6 @@ namespace SerPro.API.Providers
                 return;
             }
 
-            // var roles = await userManager.GetRolesAsync(user.Id);
             //if (!user.EmailConfirmed)
             //{
             //    context.SetError("invalid_grant", "User did not confirm email.");
@@ -45,36 +46,36 @@ namespace SerPro.API.Providers
             //}
 
             ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager, "JWT");
-
-
-            List<Claim> roles = oAuthIdentity.Claims.Where(c => c.Type == ClaimTypes.Role).ToList();
-            AuthenticationProperties properties = CreateProperties(user.UserName, Newtonsoft.Json.JsonConvert.SerializeObject(roles.Select(x => x.Value)));
-
-            AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
-            context.Validated(ticket);
-            //context.Request.Context.Authentication.SignIn(cookiesIdentity);
-
-
-            //oAuthIdentity.AddClaims(ExtendedClaimsProvider.GetClaims(user));
-            //oAuthIdentity.AddClaims(RolesFromClaims.CreateRolesBasedOnClaims(oAuthIdentity));
+            oAuthIdentity.AddClaims(ExtendedClaimsProvider.GetClaims(user));
+            oAuthIdentity.AddClaims(RolesFromClaims.CreateRolesBasedOnClaims(oAuthIdentity));
 
             //var ticket = new AuthenticationTicket(oAuthIdentity, null);
 
+            var props = new AuthenticationProperties(new Dictionary<string, string>
+                {
+                    { 
+                        "as:client_id", (context.ClientId == null) ? string.Empty : context.ClientId
+                    },
+                    { 
+                        "UserName", context.UserName
+                    },
+                    {
+                        "level", user.Level.ToString()
+                    },
+                    {
+                        "firstname", user.FirstName
+                    },
+                    {
+                        "lastname", user.LastName
+                    }
+                });
 
-            //var ticket = new AuthenticationTicket(oAuthIdentity, props);
+            var ticket = new AuthenticationTicket(oAuthIdentity, props);
 
             context.Validated(ticket);
 
         }
-        public static AuthenticationProperties CreateProperties(string userName, string Roles)
-        {
-            IDictionary<string, string> data = new Dictionary<string, string>
-                {
-                    { "userName", userName },
-                    {"roles",Roles}
-                };
-            return new AuthenticationProperties(data);
-        }
+
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
