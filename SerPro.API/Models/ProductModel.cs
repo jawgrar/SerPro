@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace SerPro.API.Models
 {
-    public class Product
+    public class PhotoViewModel
     {
-        [Key]
-        public int Id { get; set; }
-        public string FileName { get; set; }
-        public string Description { get; set; }
-        public DateTime CreatedTimestamp { get; set; }
-        public DateTime UpdatedTimestamp { get; set; }
-        public string ContentType { get; set; }
-        public string UserName { get; set; }
+        public string Name { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
+        public long Size { get; set; }
+
     }
 }

@@ -3,10 +3,16 @@
 <head>
     <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
     <title>SerPro</title>
-    <link href="content/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="content/css/site.css" rel="stylesheet" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
     <link href="content/css/loading-bar.css" rel="stylesheet" />
-    <link href="content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="content/css/site.css" rel="stylesheet" />
+
+    <!--<link href="content/css/font-awesome.min.css" rel="stylesheet" />-->
     <link href="content/css/social-buttons.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
@@ -49,30 +55,44 @@
         </div>
     </div>
     <!-- 3rd party libraries -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>-->
+    <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+    <script src="https://code.angularjs.org/1.2.16/angular-route.js"></script>
+    <script src="scripts/angular-resource.js"></script>
     <script src="scripts/angular-local-storage.min.js"></script>
     <script src="scripts/loading-bar.min.js"></script>
     <!-- Load app main script -->
-    <script src="app/app.js?v=2"></script>
+    <script src="app/app.js"></script>
+    <script src="app/fileUpload/appInfo.js"></script>
+    <script src="app/services/authInterceptorService.js"></script>
+    <script src="app/services/authService.js"></script>
+    <script src="app/controllers/indexController.js"></script>
+    <script src="app/controllers/indexController.js"></script>
+    <script src="app/controllers/homeController.js"></script>
+    <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/signupController.js"></script>
+    <script src="app/controllers/ordersController.js"></script>
+
+    <script src="app/controllers/refreshController.js"></script>
+    <script src="app/controllers/tokensManagerController.js"></script>
+    <script src="app/controllers/associateController.js"></script>
     <!-- Load services -->
-    <script src="app/services/authInterceptorService.js?v=2"></script>
-    <script src="app/services/authService.js?v=2"></script>
-    <script src="app/services/ordersService.js?v=2"></script>
-    <script src="app/services/fileUploadService.js?v=2"></script>
-    <script src="app/fileUploader.js?v=2"></script>
-    <script src="app/services/tokensManagerService.js?v=2"></script>
+    <script src="app/services/authInterceptorService.js"></script>
+    <script src="app/services/authService.js"></script>
+    <script src="app/services/ordersService.js"></script>
+
+    <script src="app/services/tokensManagerService.js"></script>
     <!-- Load controllers -->
-    <script src="app/controllers/indexController.js?v=2"></script>
-    <script src="app/controllers/homeController.js?v=2"></script>
-    <script src="app/controllers/loginController.js?v=2"></script>
-    <script src="app/controllers/signupController.js?v=2"></script>
-    <script src="app/controllers/ordersController.js?v=2"></script>
-    <script src="app/controllers/fileUploadController.js?v=2"></script>
-    <script src="app/controllers/refreshController.js?v=2"></script>
-    <script src="app/controllers/tokensManagerController.js?v=2"></script>
-    <script src="app/controllers/associateController.js?v=2"></script>
     <!-- Load custom filters -->
+    <script src="app/fileUpload/egAppStatus.js"></script>
+    <script src="app/fileUpload/photos.js"></script>
+    <script src="app/fileUpload/photoManager.js"></script>
+
+    <script src="app/fileUpload/egFiles.js"></script>
+    <script src="app/fileUpload/egUpload.js"></script>
+    <script src="app/fileUpload/egPhotoUploader.js"></script>
+    <script src="app/fileUpload/photoManagerClient.js"></script>
     <!-- Load custom directives -->
 </body>
 </html>

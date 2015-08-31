@@ -1,5 +1,5 @@
 ﻿
-var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+var app = angular.module('AngularAuthApp', ['ngResource', 'ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
 
 app.config(function ($routeProvider) {
 
@@ -23,10 +23,19 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/orders.html"
     });
 
-    //$routeProvider.when("/fileUpload", {
-    //    controller: "fileUploadController",
-    //    templateUrl: "/app/views/fileUpload.html"
-    //});
+    $routeProvider.when('/FileUpload', {
+        templateUrl: 'app/fileUpload/photos.html',
+        controller: 'photos',
+        controllerAs: 'vm',
+        caseInsensitiveMatch: true
+    });
+
+    $routeProvider.when('/landing', {
+        templateUrl: 'app/views/landing.html',
+        controller: 'photos',
+        controllerAs: 'vm',
+        caseInsensitiveMatch: true
+    });
 
     $routeProvider.when("/refresh", {
         controller: "refreshController",
@@ -53,17 +62,6 @@ app.constant('ngAuthSettings', {
     clientId: 'ngAuthApp'
 });
 
-angular.module("AngularAuthApp", ["ngRoute", "akFileUploader"])
-          .config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
-              $routeProvider.when("/", {
-                  templateUrl: "/app/views/fileUpload.html",
-                  controller: "fileUploadController"
-              });
-              $locationProvider.html5Mode({
-                  enabled: true,
-                  requireBase: false
-              });
-          }]);
 
 app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');

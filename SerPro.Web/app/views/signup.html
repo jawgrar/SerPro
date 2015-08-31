@@ -8,10 +8,28 @@
     <input type="text" class="form-control" placeholder="Last Name" data-ng-model="registration.lastName" required>
     <!--<input type="text" class="form-control" placeholder="Gender" data-ng-model="registration.gender" required>-->
     <!--<input type="text" class="form-control" placeholder="Role" data-ng-model="registration.role" required>-->
-    <select class="form-control" data-ng-model="registration.roleName">
+    <!--<select class="form-control" data-ng-model="registration.roleName">
         <option value="">--Select Role--</option>
         <option data-ng-repeat="t in role" value="">{{t.name}}</option>
-    </select>
+    </select>-->
+    <label class="btn btn-default">
+        <input type="radio" ng-model="gender.name" ng-value="'Male'">
+        Male
+    </label>
+    <label class="btn btn-default">
+        <input type="radio" ng-model="gender.name" ng-value="'Female'">
+        Female
+    </label>
+    <br />
+    <label class="btn btn-default">
+        <input type="radio" ng-model="registration.roleName" ng-value="'User''">
+        User
+    </label>
+    <label class="btn btn-default">
+        <input type="radio" ng-model="registration.roleName" ng-value="'Provider'">
+        Provider
+    </label>
+
 
     <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="signUp()">Submit</button>
     <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
