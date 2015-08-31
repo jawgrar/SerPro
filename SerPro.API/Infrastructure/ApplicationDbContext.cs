@@ -35,6 +35,6 @@ namespace SerPro.API.Infrastructure
             modelBuilder.Entity<IdentityUserClaim>().HasKey<string>(l => l.UserId).ToTable("UserClaims");
             modelBuilder.Entity<IdentityRole>().ToTable("Roles");
         }
-        public DbSet<Product> Product { get; set; }
+        //public DbSet<Product> Product { get; set; }
     }
 }

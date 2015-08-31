@@ -82,7 +82,6 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\associateController.js" />
-    <Content Include="app\controllers\fileUploadController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
@@ -90,21 +89,33 @@
     <Content Include="app\controllers\refreshController.js" />
     <Content Include="app\controllers\signupController.js" />
     <Content Include="app\controllers\tokensManagerController.js" />
-    <Content Include="app\fileUploader.js" />
+    <Content Include="app\fileUpload\egAppStatus.html" />
+    <Content Include="app\fileUpload\egAppStatus.js" />
+    <Content Include="app\fileUpload\appInfo.js" />
+    <Content Include="app\fileUpload\egFiles.js" />
+    <Content Include="app\fileUpload\egPhotoUploader.html" />
+    <Content Include="app\fileUpload\egPhotoUploader.js" />
+    <Content Include="app\fileUpload\egUpload.js" />
+    <Content Include="app\fileUpload\photoManager.js" />
+    <Content Include="app\fileUpload\photoManagerClient.js" />
+    <Content Include="app\fileUpload\photos.html" />
+    <Content Include="app\fileUpload\photos.js" />
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\authService.js" />
-    <Content Include="app\services\fileUploadService.js" />
     <Content Include="app\services\ordersService.js" />
     <Content Include="app\services\tokensManagerService.js" />
     <Content Include="app\views\associate.html" />
     <Content Include="app\views\home.html" />
+    <Content Include="app\views\landing.html" />
     <Content Include="app\views\login.html" />
-    <Content Include="app\views\orders.html" />
     <Content Include="app\views\refresh.html" />
     <Content Include="app\views\signup.html" />
     <Content Include="app\views\tokens.html" />
-    <Content Include="app\views\fileUpload.html" />
     <Content Include="authComplete.html" />
+    <Content Include="content\bootstrap-theme.css" />
+    <Content Include="content\bootstrap-theme.min.css" />
+    <Content Include="content\bootstrap.css" />
+    <Content Include="content\bootstrap.min.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\font-awesome.min.css" />
     <Content Include="content\css\loading-bar.css" />
@@ -115,6 +126,7 @@
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-local-storage.min.js" />
+    <Content Include="scripts\angular-resource.js" />
     <Content Include="scripts\authComplete.js" />
     <Content Include="scripts\loading-bar.min.js" />
     <Content Include="Web.config" />
@@ -123,6 +135,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\bootstrap-theme.css.map" />
+    <Content Include="content\bootstrap.css.map" />
     <Content Include="content\fonts\fontawesome-webfont.eot" />
     <Content Include="content\fonts\fontawesome-webfont.ttf" />
     <Content Include="content\fonts\fontawesome-webfont.woff" />
@@ -137,7 +151,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="album\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

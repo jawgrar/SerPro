@@ -190,7 +190,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\ClaimsController.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
@@ -201,13 +201,9 @@
     <Compile Include="Infrastructure\ClaimsAuthorizationAttribute.cs" />
     <Compile Include="Infrastructure\ExtendedClaimsProvider.cs" />
     <Compile Include="Infrastructure\RolesFromClaims.cs" />
-    <Compile Include="Migrations\201508291651436_Initial.cs" />
-    <Compile Include="Migrations\201508291651436_Initial.Designer.cs">
-      <DependentUpon>201508291651436_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508292145555_Initial1.cs" />
-    <Compile Include="Migrations\201508292145555_Initial1.Designer.cs">
-      <DependentUpon>201508292145555_Initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201508312210566_Initial.cs" />
+    <Compile Include="Migrations\201508312210566_Initial.Designer.cs">
+      <DependentUpon>201508312210566_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -221,6 +217,10 @@
     <Compile Include="Providers\CustomOAuthProvider.cs" />
     <Compile Include="Result\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Upload\IPhotoManager.cs" />
+    <Compile Include="Upload\LocalPhotoManager.cs" />
+    <Compile Include="Upload\PhotoActionResult.cs" />
+    <Compile Include="Upload\PhotoMultipartFormDataStreamProvider.cs" />
     <Compile Include="Validators\MyCustomPasswordValidator.cs" />
     <Compile Include="Validators\MyCustomUserValidator.cs" />
   </ItemGroup>
@@ -234,6 +234,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Album\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -247,11 +248,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508291651436_Initial.resx">
-      <DependentUpon>201508291651436_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508292145555_Initial1.resx">
-      <DependentUpon>201508292145555_Initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508312210566_Initial.resx">
+      <DependentUpon>201508312210566_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

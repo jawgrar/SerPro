@@ -18,7 +18,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
             if (response.level == '1') {
                 $location.path('/fileUpload');
             } else {
-                $location.path('/orders');
+                $location.path('/landing');
             }
 
         },
