@@ -230,3 +230,4 @@ packages/*
 !/packages/build/
 *.cache
 *.cache
+SerPro.v12.suo
