@@ -12,6 +12,7 @@ function photos(photoManager) {
     vm.previewPhoto;
     vm.remove = photoManager.remove;
     vm.setPreviewPhoto = setPreviewPhoto;
+    vm.imagePath;
 
     activate();
 
@@ -20,6 +21,7 @@ function photos(photoManager) {
     }
 
     function setPreviewPhoto(photo) {
+        vm.imagePath = 'http://localhost:3846/album/' + photo.name;
         vm.previewPhoto = photo
     }
 
