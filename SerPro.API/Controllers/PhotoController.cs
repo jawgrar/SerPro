@@ -60,7 +60,6 @@ namespace SerPro.API.Controllers
 
         // DELETE: api/Photo/5
         [HttpDelete]
-        [Route("delete/{fileName}")]
         public async Task<IHttpActionResult> Delete(string fileName)
         {
             if (!this.photoManager.FileExists(fileName))
