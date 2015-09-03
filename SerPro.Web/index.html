@@ -5,9 +5,9 @@
     <title>SerPro</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <link href="content/css/loading-bar.css" rel="stylesheet" />
     <link href="content/css/site.css" rel="stylesheet" />
@@ -23,7 +23,9 @@
                 <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
                     <span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
-                <a class="navbar-brand" href="#/">Home</a>
+                <a class="navbar-brand" href="#/">
+                    <span translate> Home</span>
+                </a>
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
@@ -34,13 +36,18 @@
                     <li ng-if="authentication.level == '1'" data-ng-hide="!authentication.isAuth"><a href="#/fileUpload">File Upload</a></li>
                     <li ng-if="authentication.level == '0'" data-ng-hide="!authentication.isAuth"><a href="#/test">Test</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/login"><span translate>Login</span></a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup"><span translate>Signup</span></a></li>
+                    <li><a ng-click="setLanguage('en')">English</a></li>
+                    <li><a ng-click="setLanguage('es')">Spanish</a></li>
+                    <li><a ng-click="setLanguage('fr')">French</a></li>
+
                 </ul>
             </div>
         </div>
     </div>
     <div class="container">
+
         <div data-ng-view="">
         </div>
     </div>
@@ -59,6 +66,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>-->
     <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
     <script src="https://code.angularjs.org/1.2.16/angular-route.js"></script>
+    <script src="scripts/angular-cookies.js"></script>
+    <script src="scripts/angular-translate.js"></script>
+    <script src="scripts/angular-translate-loader-url.js"></script>
     <script src="scripts/angular-resource.js"></script>
     <script src="scripts/angular-local-storage.min.js"></script>
     <script src="scripts/loading-bar.min.js"></script>

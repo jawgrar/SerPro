@@ -1,12 +1,30 @@
 ﻿'use strict';
-app.factory('authInterceptorService', ['$q', '$injector','$location', 'localStorageService', function ($q, $injector,$location, localStorageService) {
+app.factory('authInterceptorService', ['$q', '$rootScope', '$injector', '$location', 'localStorageService', function ($q, $rootScope, $injector, $location, localStorageService) {
+
 
     var authInterceptorServiceFactory = {};
+
+    $rootScope.$on('$routeChangeStart', function (event, next) {
+
+        var userAuthenticated = ''; /* Check if the user is logged in */
+        var authData = localStorageService.get('authorizationData');
+        if (authData != null) {
+            //if (next.$$route.originalPath == '/fileUpload') {
+            if (authData.level == 1) {
+                $location.path('/fileupload');
+            }
+            else {
+                $location.path('/landing');
+            }
+            //}
+        }
+
+    });
 
     var _request = function (config) {
 
         config.headers = config.headers || {};
-       
+
         var authData = localStorageService.get('authorizationData');
         if (authData) {
             config.headers.Authorization = 'Bearer ' + authData.token;

@@ -1,6 +1,19 @@
 ﻿'use strict';
-app.controller('signupController', ['$scope', '$location', '$timeout', 'authService', function ($scope, $location, $timeout, authService) {
+app.controller('signupController', ['$scope', '$location', '$timeout', 'authService', '$translate', function ($scope, $cookies, $location, $timeout, authService, $translate) {
 
+    //$scope.setLanguage = setLanguage;
+
+    //function setLanguage(lang) {
+    //    $cookies.__APPLICATION_LANGUAGE = lang;
+    //    $translate.use(lang);
+    //}
+
+    //function init() {
+    //    var lang = $cookies.__APPLICATION_LANGUAGE || 'en';
+    //    setLanguage(lang);
+    //}
+
+    //init();
 
     $scope.savedSuccessfully = false;
     $scope.message = "";

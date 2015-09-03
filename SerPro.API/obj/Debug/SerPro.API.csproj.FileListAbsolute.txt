@@ -75,3 +75,10 @@ C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.dll
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.pdb
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.Migrations.Initial.resources
 C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.csproj.GenerateResource.Cache
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\es\SerPro.API.resources.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\bin\fr\SerPro.API.resources.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.Resources.Resources.resources
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.Resources.Resources.es.resources
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\SerPro.API.Resources.Resources.fr.resources
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\es\SerPro.API.resources.dll
+C:\Users\Kishan\Documents\GitHub\SerPro\SerPro.API\obj\Debug\fr\SerPro.API.resources.dll

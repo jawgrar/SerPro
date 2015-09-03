@@ -1,10 +1,22 @@
 ﻿<form class="form-login" role="form">
     <h2 class="form-login-heading">Sign up</h2>
-    <input type="email" class="form-control" placeholder="Email" data-ng-model="registration.userName" required autofocus>
+    <!--<h1 translate>ConfirmPassword</h1>
+      <h1 translate>
+          Female
+      </h1>-->
+    <!--<a class="btn btn-default" ng-click="setLanguage('en')">English</a>
+    <a class="btn btn-default" ng-click="setLanguage('es')">Spanish</a>
+    <a class="btn btn-default" ng-click="setLanguage('fr')">French</a>-->
+    <span translate> Email</span>
+    <input type="email" class="form-control" data-ng-model="registration.userName" required autofocus>
     <!--<input type="text" class="form-control" placeholder="Username" data-ng-model="registration.userName" required autofocus>-->
+    <span translate> Password</span>
     <input type="password" class="form-control" placeholder="Password" data-ng-model="registration.password" required>
+    <span translate> ConfirmPassword</span>
     <input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registration.confirmPassword" required>
+    <span translate> FirstName</span>
     <input type="text" class="form-control" placeholder="First Name" data-ng-model="registration.firstName" required>
+    <span translate> LastName</span>
     <input type="text" class="form-control" placeholder="Last Name" data-ng-model="registration.lastName" required>
     <!--<input type="text" class="form-control" placeholder="Gender" data-ng-model="registration.gender" required>-->
     <!--<input type="text" class="form-control" placeholder="Role" data-ng-model="registration.role" required>-->
@@ -14,20 +26,20 @@
     </select>-->
     <label class="btn btn-default">
         <input type="radio" ng-model="gender.name" ng-value="'Male'">
-        Male
+        <span translate>Male</span>
     </label>
     <label class="btn btn-default">
         <input type="radio" ng-model="gender.name" ng-value="'Female'">
-        Female
+        <span translate>Female</span>
     </label>
     <br />
     <label class="btn btn-default">
-        <input type="radio" ng-model="registration.roleName" ng-value="'User''">
-        User
+        <input type="radio" ng-model="registration.roleName" ng-value="'User'">
+        <span translate>User</span>
     </label>
     <label class="btn btn-default">
         <input type="radio" ng-model="registration.roleName" ng-value="'Provider'">
-        Provider
+        <span translate>Provider</span>
     </label>
 
 

@@ -1,5 +1,5 @@
 ﻿
-var app = angular.module('AngularAuthApp', ['ngResource', 'ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+var app = angular.module('AngularAuthApp', ['ngResource', 'ngCookies', 'ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate']);
 
 app.config(function ($routeProvider) {
 
@@ -66,6 +66,11 @@ app.constant('ngAuthSettings', {
 app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
 });
+
+app.config(['$translateProvider',
+        function ($translateProvider) {
+            $translateProvider.useUrlLoader('http://localhost:3846/api/translations/Get');
+        }]);
 
 app.run(['authService', function (authService) {
     authService.fillAuthData();
