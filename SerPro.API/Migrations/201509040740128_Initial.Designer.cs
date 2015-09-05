@@ -13,7 +13,7 @@ namespace SerPro.API.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201508312210566_Initial"; }
+            get { return "201509040740128_Initial"; }
         }
         
         string IMigrationMetadata.Source
