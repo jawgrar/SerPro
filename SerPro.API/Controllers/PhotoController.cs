@@ -3,7 +3,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using SerPro.API.Upload;
+using SerPro.Core.IManagers;
+using SerPro.Core.Managers;
 
 namespace SerPro.API.Controllers
 {
@@ -13,7 +14,7 @@ namespace SerPro.API.Controllers
         private readonly IPhotoManager _photoManager;
 
         public PhotoController()
-            : this(new LocalPhotoManager(HttpRuntime.AppDomainAppPath + @"\Album"))
+            : this(new PhotoManager(HttpRuntime.AppDomainAppPath + @"\Album"))
         {
         }
 

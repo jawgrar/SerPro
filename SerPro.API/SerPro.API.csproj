@@ -223,10 +223,6 @@
     </Compile>
     <Compile Include="Result\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Upload\IPhotoManager.cs" />
-    <Compile Include="Upload\LocalPhotoManager.cs" />
-    <Compile Include="Upload\PhotoActionResult.cs" />
-    <Compile Include="Upload\PhotoMultipartFormDataStreamProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

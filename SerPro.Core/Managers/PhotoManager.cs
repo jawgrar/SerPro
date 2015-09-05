@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Net.Http;
 using System.IO;
-using SerPro.API.Models;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using SerPro.Core.Entity;
+using SerPro.Core.IManagers;
 
-namespace SerPro.API.Upload
+namespace SerPro.Core.Managers
 {
-    public class LocalPhotoManager : IPhotoManager
+    public class PhotoManager : IPhotoManager
     {
 
-        private string workingFolder { get; set; }
+        private string WorkingFolder { get; set; }
 
-        public LocalPhotoManager()
+        public PhotoManager()
         {
 
         }
 
-        public LocalPhotoManager(string workingFolder)
+        public PhotoManager(string workingFolder)
         {
-            this.workingFolder = workingFolder;
+            this.WorkingFolder = workingFolder;
             CheckTargetDirectory();
         }
 
@@ -29,7 +29,7 @@ namespace SerPro.API.Upload
         {
             List<PhotoViewModel> photos = new List<PhotoViewModel>();
 
-            DirectoryInfo photoFolder = new DirectoryInfo(this.workingFolder);
+            DirectoryInfo photoFolder = new DirectoryInfo(this.WorkingFolder);
 
             await Task.Factory.StartNew(() =>
             {
@@ -52,7 +52,7 @@ namespace SerPro.API.Upload
         {
             try
             {
-                var filePath = Directory.GetFiles(this.workingFolder, fileName)
+                var filePath = Directory.GetFiles(this.WorkingFolder, fileName)
                                 .FirstOrDefault();
 
                 await Task.Factory.StartNew(() =>
@@ -70,7 +70,7 @@ namespace SerPro.API.Upload
 
         public async Task<IEnumerable<PhotoViewModel>> Add(HttpRequestMessage request)
         {
-            var provider = new PhotoMultipartFormDataStreamProvider(this.workingFolder);
+            var provider = new PhotoMultipartFormDataStreamProvider(this.WorkingFolder);
 
             await request.Content.ReadAsMultipartAsync(provider);
 
@@ -97,7 +97,7 @@ namespace SerPro.API.Upload
 
         public bool FileExists(string fileName)
         {
-            var file = Directory.GetFiles(this.workingFolder, fileName)
+            var file = Directory.GetFiles(this.WorkingFolder, fileName)
                                 .FirstOrDefault();
 
             return file != null;
@@ -105,9 +105,9 @@ namespace SerPro.API.Upload
 
         private void CheckTargetDirectory()
         {
-            if (!Directory.Exists(this.workingFolder))
+            if (!Directory.Exists(this.WorkingFolder))
             {
-                throw new ArgumentException("the destination path " + this.workingFolder + " could not be found");
+                throw new ArgumentException("the destination path " + this.WorkingFolder + " could not be found");
             }
         }
     }

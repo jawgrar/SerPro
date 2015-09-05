@@ -1,12 +1,10 @@
-﻿using SerPro.API.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using SerPro.Core.Entity;
+using SerPro.Core.Managers;
 
-namespace SerPro.API.Upload
+namespace SerPro.Core.IManagers
 {
     public interface IPhotoManager
     {

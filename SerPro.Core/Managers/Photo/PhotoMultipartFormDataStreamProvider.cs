@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
+﻿using System.Net.Http;
 
-namespace SerPro.API.Upload
+namespace SerPro.Core.Managers
 {
     public class PhotoMultipartFormDataStreamProvider : MultipartFormDataStreamProvider
     {
