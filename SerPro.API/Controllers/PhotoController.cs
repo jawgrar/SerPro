@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-using SerPro.API.Models;
-using SerPro.API.Upload;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using SerPro.API.Upload;
 
 namespace SerPro.API.Controllers
 {
