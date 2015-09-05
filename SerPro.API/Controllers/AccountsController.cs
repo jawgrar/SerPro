@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Net.Http;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
-using System.Security.Claims;
-using SerPro.API.Models;
+using System.Web.Http;
+using Microsoft.AspNet.Identity;
 using SerPro.API.Infrastructure;
-using Microsoft.AspNet.Identity.EntityFramework;
+using SerPro.API.Models;
 
 namespace SerPro.API.Controllers
 {
@@ -28,35 +21,15 @@ namespace SerPro.API.Controllers
                 return BadRequest(ModelState);
             }
 
-
-            var user = new UserMaster();
-
-            user.UserName = createUserModel.Username;
-            user.Email = createUserModel.Username;
-            user.FirstName = createUserModel.FirstName;
-            user.LastName = createUserModel.LastName;
-            user.JoinDate = DateTime.Now.Date;
-
-            if (createUserModel.RoleName == "Provider")
+            var user = new UserMaster
             {
-                user.Level = 1;
-            }
-            else
-            {
-                user.Level = 2;
-            }
-
-            //var role = new IdentityRole { Name = createUserModel.RoleName };
-
-            //if (await this.AppRoleManager.FindByNameAsync(createUserModel.RoleName) == null)
-            //{
-            //    var roleResult = await this.AppRoleManager.CreateAsync(role);
-
-            //    if (!roleResult.Succeeded)
-            //    {
-            //        return GetErrorResult(roleResult);
-            //    }
-            //}
+                UserName = createUserModel.Username,
+                Email = createUserModel.Username,
+                FirstName = createUserModel.FirstName,
+                LastName = createUserModel.LastName,
+                JoinDate = DateTime.Now.Date,
+                Level = (byte) (createUserModel.RoleName == "Provider" ? 1 : 2)
+            };
 
 
             IdentityResult addUserResult = await this.AppUserManager.CreateAsync(user, createUserModel.Password);
@@ -66,29 +39,7 @@ namespace SerPro.API.Controllers
                 return GetErrorResult(addUserResult);
             }
 
-            //Assign Role to user Here 
-            //var addToRoleResult = await this.AppUserManager.AddToRoleAsync(user.Id, role.Name.ToString());
-
-            //if (!addToRoleResult.Succeeded)
-            //{
-            //    return GetErrorResult(addToRoleResult);
-            //}
-            //Ends Here
-
-            //string code = await this.AppUserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-
-            //var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code = code }));
-
-            //await this.AppUserManager.SendEmailAsync(user.Id,
-            //                                        "Confirm your account",
-            //                                        "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-            //Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
-
-            //return Created(locationHeader, TheModelFactory.Create(user));
-
             return Ok();
-
         }
 
         [AllowAnonymous]
@@ -104,15 +55,9 @@ namespace SerPro.API.Controllers
 
             IdentityResult result = await this.AppUserManager.ConfirmEmailAsync(userId, code);
 
-            if (result.Succeeded)
-            {
-                return Ok();
-            }
-            else
-            {
-                return GetErrorResult(result);
-            }
-        }
+            if (!result.Succeeded) return GetErrorResult(result);
 
+            return Ok();
+        }
     }
 }

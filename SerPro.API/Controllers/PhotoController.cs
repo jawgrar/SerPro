@@ -2,10 +2,6 @@
 using SerPro.API.Models;
 using SerPro.API.Upload;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -16,7 +12,7 @@ namespace SerPro.API.Controllers
     [RoutePrefix("api/photo")]
     public class PhotoController : ApiController
     {
-        private IPhotoManager photoManager;
+        private readonly IPhotoManager _photoManager;
 
         public PhotoController()
             : this(new LocalPhotoManager(HttpRuntime.AppDomainAppPath + @"\Album"))
@@ -25,14 +21,14 @@ namespace SerPro.API.Controllers
 
         public PhotoController(IPhotoManager photoManager)
         {
-            this.photoManager = photoManager;
+            _photoManager = photoManager;
         }
 
         // GET: api/Photo
         [Route("get")]
         public async Task<IHttpActionResult> Get()
         {
-            var results = await photoManager.Get();
+            var results = await _photoManager.Get();
             return Ok(new { photos = results });
         }
 
@@ -48,7 +44,7 @@ namespace SerPro.API.Controllers
 
             try
             {
-                var photos = await photoManager.Add(Request);
+                var photos = await _photoManager.Add(Request);
                 return Ok(new { Message = "Photos uploaded ok", Photos = photos });
             }
             catch (Exception ex)
@@ -62,12 +58,12 @@ namespace SerPro.API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(string fileName)
         {
-            if (!this.photoManager.FileExists(fileName))
+            if (!this._photoManager.FileExists(fileName))
             {
                 return NotFound();
             }
 
-            var result = await this.photoManager.Delete(fileName);
+            var result = await this._photoManager.Delete(fileName);
 
             if (result.Successful)
             {
