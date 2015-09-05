@@ -4,6 +4,7 @@ using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using SerPro.API.Infrastructure;
 using SerPro.API.Models;
+using SerPro.Core.Enums;
 
 namespace SerPro.API.Controllers
 {
@@ -28,7 +29,7 @@ namespace SerPro.API.Controllers
                 FirstName = createUserModel.FirstName,
                 LastName = createUserModel.LastName,
                 JoinDate = DateTime.Now.Date,
-                Level = (byte) (createUserModel.RoleName == "Provider" ? 1 : 2)
+                Level = (byte) (createUserModel.RoleName == "Provider" ? RoleType.Provider : RoleType.User)
             };
 
 
