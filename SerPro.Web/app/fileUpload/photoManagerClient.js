@@ -4,11 +4,14 @@ app.factory('photoManagerClient', photoManagerClient);
 photoManagerClient.$inject = ['$resource'];
 
 function photoManagerClient($resource) {
-    return $resource("http://localhost:3846/api/photo/:fileName",
+
+    var url = "http://localhost:3846/api/pictures/";
+
+    return $resource(url + ":fileName",
                { id: "@fileName" },
                {
-                   'query': { method: 'GET', url: 'http://localhost:3846/api/photo/get' },
-                   'save': { method: 'POST', url: 'http://localhost:3846/api/photo/post', transformRequest: angular.identity, headers: { 'Content-Type': undefined } },
-                   'remove': { method: 'DELETE', url: 'http://localhost:3846/api/photo/delete/:fileName', params: { name: '@fileName' } }
+                   'query': { method: 'GET', url: url + 'get' },
+                   'save': { method: 'POST', url: url + 'post', transformRequest: angular.identity, headers: { 'Content-Type': undefined } },
+                   'remove': { method: 'DELETE', url: url + 'delete/:fileName', params: { name: '@fileName' } }
                });
 }

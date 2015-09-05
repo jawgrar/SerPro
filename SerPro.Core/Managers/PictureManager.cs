@@ -6,36 +6,37 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using SerPro.Core.Entity;
 using SerPro.Core.IManagers;
+using SerPro.Core.Managers.Picture;
 
 namespace SerPro.Core.Managers
 {
-    public class PhotoManager : IPhotoManager
+    public class PictureManager : IPictureManager
     {
 
         private string WorkingFolder { get; set; }
 
-        public PhotoManager()
+        public PictureManager()
         {
 
         }
 
-        public PhotoManager(string workingFolder)
+        public PictureManager(string workingFolder)
         {
             this.WorkingFolder = workingFolder;
             CheckTargetDirectory();
         }
 
-        public async Task<IEnumerable<PhotoViewModel>> Get()
+        public async Task<IEnumerable<PictureView>> Get()
         {
-            List<PhotoViewModel> photos = new List<PhotoViewModel>();
+            List<PictureView> pictures = new List<PictureView>();
 
-            DirectoryInfo photoFolder = new DirectoryInfo(this.WorkingFolder);
+            DirectoryInfo picFolder = new DirectoryInfo(this.WorkingFolder);
 
             await Task.Factory.StartNew(() =>
             {
-                photos = photoFolder.EnumerateFiles()
+                pictures = picFolder.EnumerateFiles()
                                             .Where(fi => new[] { ".jpg", ".bmp", ".png", ".gif", ".tiff" }.Contains(fi.Extension.ToLower()))
-                                            .Select(fi => new PhotoViewModel
+                                            .Select(fi => new PictureView
                                             {
                                                 Name = fi.Name,
                                                 Created = fi.CreationTime,
@@ -45,10 +46,10 @@ namespace SerPro.Core.Managers
                                             .ToList();
             });
 
-            return photos;
+            return pictures;
         }
 
-        public async Task<PhotoActionResult> Delete(string fileName)
+        public async Task<PictureActionResult> Delete(string fileName)
         {
             try
             {
@@ -60,30 +61,30 @@ namespace SerPro.Core.Managers
                     File.Delete(filePath);
                 });
 
-                return new PhotoActionResult { Successful = true, Message = fileName + "deleted successfully" };
+                return new PictureActionResult { Successful = true, Message = fileName + "deleted successfully" };
             }
             catch (Exception ex)
             {
-                return new PhotoActionResult { Successful = false, Message = "error deleting fileName " + ex.GetBaseException().Message };
+                return new PictureActionResult { Successful = false, Message = "error deleting fileName " + ex.GetBaseException().Message };
             }
         }
 
-        public async Task<IEnumerable<PhotoViewModel>> Add(HttpRequestMessage request)
+        public async Task<IEnumerable<PictureView>> Add(HttpRequestMessage request)
         {
-            var provider = new PhotoMultipartFormDataStreamProvider(this.WorkingFolder);
+            var provider = new PictureMultipartFormDataStreamProvider(this.WorkingFolder);
 
             await request.Content.ReadAsMultipartAsync(provider);
 
             //string targetPath = @"C:\Users\Public\TestFolder\SubDir";
 
 
-            var photos = new List<PhotoViewModel>();
+            var pictures = new List<PictureView>();
 
             foreach (var file in provider.FileData)
             {
                 var fileInfo = new FileInfo(file.LocalFileName);
 
-                photos.Add(new PhotoViewModel
+                pictures.Add(new PictureView
                 {
                     Name = fileInfo.Name,
                     Created = fileInfo.CreationTime,
@@ -92,7 +93,7 @@ namespace SerPro.Core.Managers
                 });
             }
 
-            return photos;
+            return pictures;
         }
 
         public bool FileExists(string fileName)

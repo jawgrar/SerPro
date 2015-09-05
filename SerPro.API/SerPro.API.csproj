@@ -190,7 +190,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\ClaimsController.cs" />
-    <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\PicturesController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TranslationsController.cs" />
@@ -211,7 +211,6 @@
     <Compile Include="Models\ClaimBindingModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
-    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\RoleBindingModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />

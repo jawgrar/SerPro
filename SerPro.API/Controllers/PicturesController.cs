@@ -8,30 +8,30 @@ using SerPro.Core.Managers;
 
 namespace SerPro.API.Controllers
 {
-    [RoutePrefix("api/photo")]
-    public class PhotoController : ApiController
+    [RoutePrefix("api/pictures")]
+    public class PicturesController : ApiController
     {
-        private readonly IPhotoManager _photoManager;
+        private readonly IPictureManager _pictureManager;
 
-        public PhotoController()
-            : this(new PhotoManager(HttpRuntime.AppDomainAppPath + @"\Album"))
+        public PicturesController()
+            : this(new PictureManager(HttpRuntime.AppDomainAppPath + @"\Album"))
         {
         }
 
-        public PhotoController(IPhotoManager photoManager)
+        public PicturesController(IPictureManager pictureManager)
         {
-            _photoManager = photoManager;
+            _pictureManager = pictureManager;
         }
 
-        // GET: api/Photo
+        // GET: api/pictures
         [Route("get")]
         public async Task<IHttpActionResult> Get()
         {
-            var results = await _photoManager.Get();
-            return Ok(new { photos = results });
+            var results = await _pictureManager.Get();
+            return Ok(new { pictures = results });
         }
 
-        // POST: api/Photo
+        // POST: api/pictures
         [Route("post")]
         public async Task<IHttpActionResult> Post()
         {
@@ -43,8 +43,8 @@ namespace SerPro.API.Controllers
 
             try
             {
-                var photos = await _photoManager.Add(Request);
-                return Ok(new { Message = "Photos uploaded ok", Photos = photos });
+                var pictures = await _pictureManager.Add(Request);
+                return Ok(new { Message = "pictures uploaded ok", pictures });
             }
             catch (Exception ex)
             {
@@ -53,16 +53,16 @@ namespace SerPro.API.Controllers
 
         }
 
-        // DELETE: api/Photo/5
+        // DELETE: api/pictures/5
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(string fileName)
         {
-            if (!this._photoManager.FileExists(fileName))
+            if (!this._pictureManager.FileExists(fileName))
             {
                 return NotFound();
             }
 
-            var result = await this._photoManager.Delete(fileName);
+            var result = await this._pictureManager.Delete(fileName);
 
             if (result.Successful)
             {

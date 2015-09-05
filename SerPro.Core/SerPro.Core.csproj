@@ -59,13 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Product.cs" />
-    <Compile Include="Entity\ProductModel.cs" />
+    <Compile Include="Entity\PictureView.cs" />
     <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IManagers\IPhotoManager.cs" />
-    <Compile Include="Managers\PhotoManager.cs" />
-    <Compile Include="Managers\Photo\PhotoActionResult.cs" />
-    <Compile Include="Managers\Photo\PhotoMultipartFormDataStreamProvider.cs" />
+    <Compile Include="IManagers\IPictureManager.cs" />
+    <Compile Include="Managers\PictureManager.cs" />
+    <Compile Include="Managers\Picture\PictureActionResult.cs" />
+    <Compile Include="Managers\Picture\PictureMultipartFormDataStreamProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

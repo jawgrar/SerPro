@@ -2,7 +2,7 @@
 
 namespace SerPro.Core.Entity
 {
-    public class PhotoViewModel
+    public class PictureView
     {
         public string Name { get; set; }
         public DateTime Created { get; set; }

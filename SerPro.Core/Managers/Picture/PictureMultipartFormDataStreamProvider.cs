@@ -1,11 +1,11 @@
 ﻿using System.Net.Http;
 
-namespace SerPro.Core.Managers
+namespace SerPro.Core.Managers.Picture
 {
-    public class PhotoMultipartFormDataStreamProvider : MultipartFormDataStreamProvider
+    public class PictureMultipartFormDataStreamProvider : MultipartFormDataStreamProvider
     {
     
-        public PhotoMultipartFormDataStreamProvider(string path) : base(path)    
+        public PictureMultipartFormDataStreamProvider(string path) : base(path)    
         {
         }
  

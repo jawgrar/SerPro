@@ -1,6 +1,6 @@
-﻿namespace SerPro.Core.Managers
+﻿namespace SerPro.Core.Managers.Picture
 {
-    public class PhotoActionResult
+    public class PictureActionResult
     {
         public bool Successful { get; set; }
         public string Message { get; set; }
