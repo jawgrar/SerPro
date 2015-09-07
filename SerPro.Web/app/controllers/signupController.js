@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('signupController', ['$scope', '$location', '$timeout', 'authService', '$translate', function ($scope, $cookies, $location, $timeout, authService, $translate) {
+app.controller('signupController', ['$scope', '$location', '$timeout', 'authService', '$translate', function ($scope, $location, $timeout, authService, $translate) {
 
     //$scope.setLanguage = setLanguage;
 

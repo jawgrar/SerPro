@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerPro.DAL", "SerPro.DAL\SerPro.DAL.csproj", "{3DCF6B72-F016-46FB-91A8-B1EF04D6FD85}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerPro.Core", "SerPro.Core\SerPro.Core.csproj", "{24EF81DB-0133-4CC1-ADB2-85AE8D8E5451}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerPro.Web", "SerPro.Web\SerPro.Web.csproj", "{344BD54D-524B-4DEF-9B23-D14B687B578D}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3DCF6B72-F016-46FB-91A8-B1EF04D6FD85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DCF6B72-F016-46FB-91A8-B1EF04D6FD85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DCF6B72-F016-46FB-91A8-B1EF04D6FD85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DCF6B72-F016-46FB-91A8-B1EF04D6FD85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{24EF81DB-0133-4CC1-ADB2-85AE8D8E5451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{24EF81DB-0133-4CC1-ADB2-85AE8D8E5451}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24EF81DB-0133-4CC1-ADB2-85AE8D8E5451}.Release|Any CPU.ActiveCfg = Release|Any CPU

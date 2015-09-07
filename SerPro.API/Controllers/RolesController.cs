@@ -2,10 +2,6 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using SerPro.API.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -17,9 +13,9 @@ namespace SerPro.API.Controllers
     {
 
         [Route("{id:guid}", Name = "GetRoleById")]
-        public async Task<IHttpActionResult> GetRole(string Id)
+        public async Task<IHttpActionResult> GetRole(string id)
         {
-            var role = await this.AppRoleManager.FindByIdAsync(Id);
+            var role = await AppRoleManager.FindByIdAsync(id);
 
             if (role != null)
             {
@@ -33,7 +29,7 @@ namespace SerPro.API.Controllers
         [Route("", Name = "GetAllRoles")]
         public IHttpActionResult GetAllRoles()
         {
-            var roles = this.AppRoleManager.Roles;
+            var roles = AppRoleManager.Roles;
 
             return Ok(roles);
         }
@@ -48,7 +44,7 @@ namespace SerPro.API.Controllers
 
             var role = new IdentityRole { Name = model.Name };
 
-            var result = await this.AppRoleManager.CreateAsync(role);
+            var result = await AppRoleManager.CreateAsync(role);
 
             if (!result.Succeeded)
             {
@@ -62,14 +58,14 @@ namespace SerPro.API.Controllers
         }
 
         [Route("{id:guid}")]
-        public async Task<IHttpActionResult> DeleteRole(string Id)
+        public async Task<IHttpActionResult> DeleteRole(string id)
         {
 
-            var role = await this.AppRoleManager.FindByIdAsync(Id);
+            var role = await AppRoleManager.FindByIdAsync(id);
 
             if (role != null)
             {
-                IdentityResult result = await this.AppRoleManager.DeleteAsync(role);
+                IdentityResult result = await AppRoleManager.DeleteAsync(role);
 
                 if (!result.Succeeded)
                 {
@@ -80,13 +76,12 @@ namespace SerPro.API.Controllers
             }
 
             return NotFound();
-
         }
 
         [Route("ManageUsersInRole")]
         public async Task<IHttpActionResult> ManageUsersInRole(UsersInRoleModel model)
         {
-            var role = await this.AppRoleManager.FindByIdAsync(model.Id);
+            var role = await AppRoleManager.FindByIdAsync(model.Id);
 
             if (role == null)
             {
@@ -94,9 +89,9 @@ namespace SerPro.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            foreach (string user in model.EnrolledUsers)
+            foreach (var user in model.EnrolledUsers)
             {
-                var appUser = await this.AppUserManager.FindByIdAsync(user);
+                var appUser = await AppUserManager.FindByIdAsync(user);
 
                 if (appUser == null)
                 {
