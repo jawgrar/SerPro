@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Http;
 using SerPro.Core.IManagers;
 using SerPro.Core.Managers;
+using SerPro.API.Infrastructure;
+using SerPro.Core.Entity;
 
 namespace SerPro.API.Controllers
 {
@@ -12,6 +14,7 @@ namespace SerPro.API.Controllers
     public class PicturesController : ApiController
     {
         private readonly IPictureManager _pictureManager;
+        private ApplicationDbContext _dbContext = new ApplicationDbContext();
 
         public PicturesController()
             : this(new PictureManager(HttpRuntime.AppDomainAppPath + @"\Album"))
@@ -43,8 +46,19 @@ namespace SerPro.API.Controllers
 
             try
             {
-                var pictures = await _pictureManager.Add(Request);
-                return Ok(new { Message = "pictures uploaded ok", pictures });
+                //var pictures = await _pictureManager.Add(Request);
+
+                var pictures = await _pictureManager.GetImagebyte(Request);
+
+                Image image = new Image();
+                image.Photo = pictures;
+
+                _dbContext.Image.Add(image);
+                _dbContext.SaveChanges();
+
+                int newId = image.ImageId;
+
+                return Ok(new { Message = "pictures uploaded ok", newId });
             }
             catch (Exception ex)
             {

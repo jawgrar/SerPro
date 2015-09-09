@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
-namespace SerPro.Core.Entity
+namespace SerPro.API.Models
 {
-    public class Product
+    public class ProductModel
     {
         public int ProductId { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
         public string Desription { get; set; }
-        public int ImageId { get; set; }
-        public virtual Image Image { get; set; }
+        public HttpPostedFileBase Picture { get; set; }
     }
 }

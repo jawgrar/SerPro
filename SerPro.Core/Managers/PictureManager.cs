@@ -69,6 +69,26 @@ namespace SerPro.Core.Managers
             }
         }
 
+        public async Task<byte[]> GetImagebyte(HttpRequestMessage request)
+        {
+            byte[] bytes = null;
+
+            var provider = new PictureMultipartFormDataStreamProvider(this.WorkingFolder);
+
+            await request.Content.ReadAsMultipartAsync(provider);
+
+            foreach (var file in provider.FileData)
+            {
+                var fileInfo = new FileInfo(file.LocalFileName);
+
+                bytes = System.IO.File.ReadAllBytes(file.LocalFileName);
+
+            }
+
+            return bytes;
+
+        }
+
         public async Task<IEnumerable<PictureView>> Add(HttpRequestMessage request)
         {
             var provider = new PictureMultipartFormDataStreamProvider(this.WorkingFolder);
@@ -83,6 +103,8 @@ namespace SerPro.Core.Managers
             foreach (var file in provider.FileData)
             {
                 var fileInfo = new FileInfo(file.LocalFileName);
+
+                byte[] bytes = System.IO.File.ReadAllBytes(file.LocalFileName);
 
                 pictures.Add(new PictureView
                 {
