@@ -190,7 +190,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\ClaimsController.cs" />
-    <Compile Include="Controllers\PicturesController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TranslationsController.cs" />
@@ -202,15 +202,16 @@
     <Compile Include="Infrastructure\ClaimsAuthorizationAttribute.cs" />
     <Compile Include="Infrastructure\ExtendedClaimsProvider.cs" />
     <Compile Include="Infrastructure\RolesFromClaims.cs" />
-    <Compile Include="Migrations\201509040740128_Initial.cs" />
-    <Compile Include="Migrations\201509040740128_Initial.Designer.cs">
-      <DependentUpon>201509040740128_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508312210566_Initial.resx" />
+    <Compile Include="Migrations\201508312210566_Initial.Designer.cs">
+      <DependentUpon>201508312210566_Initial.resx</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\ClaimBindingModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\RoleBindingModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
@@ -222,9 +223,17 @@
     </Compile>
     <Compile Include="Result\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Upload\IPhotoManager.cs" />
+    <Compile Include="Upload\LocalPhotoManager.cs" />
+    <Compile Include="Upload\PhotoActionResult.cs" />
+    <Compile Include="Upload\PhotoMultipartFormDataStreamProvider.cs" />
+    <Compile Include="Validators\MyCustomPasswordValidator.cs" />
+    <Compile Include="Validators\MyCustomUserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -247,8 +256,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509040740128_Initial.resx">
-      <DependentUpon>201509040740128_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508312210566_Initial.Designer.resx">
+      <DependentUpon>201508312210566_Initial.resx</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.es.resx" />
     <EmbeddedResource Include="Resources\Resources.fr.resx" />
