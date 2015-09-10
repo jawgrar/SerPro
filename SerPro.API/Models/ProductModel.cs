@@ -11,8 +11,8 @@ namespace SerPro.API.Models
     {
         public int ProductId { get; set; }
         public string Name { get; set; }
-        public double Price { get; set; }
-        public string Desription { get; set; }
-        public HttpPostedFileBase Picture { get; set; }
+        public string Price { get; set; }
+        public string description { get; set; }
+        public string Picture { get; set; }
     }
 }

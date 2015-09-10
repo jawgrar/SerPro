@@ -19,19 +19,17 @@ namespace SerPro.API.Controllers
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
 
         // POST: api/product
+        [HttpPost]
         [Route("post")]
-        public IHttpActionResult Post(ProductModel productModel)
+        public IHttpActionResult Post(ProductModel objProductModel)
         {
             try
             {
-                byte[] pictureData = null;
-                using (var binaryReader = new BinaryReader(productModel.Picture.InputStream))
-                {
-                    pictureData = binaryReader.ReadBytes(productModel.Picture.ContentLength);
-                }
+                var img = objProductModel.Picture.Replace("data:image/png;base64,", "");
+                byte[] bytes = Convert.FromBase64String(img);
 
                 Image image = new Image();
-                image.Photo = pictureData;
+                image.Photo = bytes;
 
                 _dbContext.Image.Add(image);
                 _dbContext.SaveChanges();
@@ -41,9 +39,9 @@ namespace SerPro.API.Controllers
                 //save product to db
 
                 Product objProduct = new Product();
-                objProduct.Name = productModel.Name;
-                objProduct.Desription = productModel.Desription;
-                objProduct.Price = productModel.Price;
+                objProduct.Name = objProductModel.Name;
+                objProduct.Desription = objProductModel.description;
+                objProduct.Price = Convert.ToDouble(objProductModel.Price);
                 objProduct.ImageId = newImageId;
 
                 _dbContext.Product.Add(objProduct);

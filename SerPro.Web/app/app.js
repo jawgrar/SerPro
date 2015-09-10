@@ -37,6 +37,11 @@ app.config(function ($routeProvider) {
         caseInsensitiveMatch: true
     });
 
+    $routeProvider.when("/product", {
+        templateUrl: "app/views/product.html",
+        controller: "productController"
+    });
+
     $routeProvider.when("/refresh", {
         controller: "refreshController",
         templateUrl: "/app/views/refresh.html"
