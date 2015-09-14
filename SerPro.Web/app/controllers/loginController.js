@@ -20,7 +20,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
             if (response.level == '1') {
                 $location.path('/product');
             } else {
-                $location.path('/landing');
+                $location.path('/productlist');
             }
 
         },

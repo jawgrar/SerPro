@@ -23,7 +23,7 @@
                 <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
                     <span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
-                <a class="navbar-brand" href="#/">
+                <a class="navbar-brand" href="/">
                     <span translate> Home</span>
                 </a>
             </div>
@@ -33,11 +33,10 @@
                     <!--<li data-ng-hide="!authentication.isAuth"><a href="#/orders">My Orders</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="#/refresh">Refresh Token</a></li>-->
 
-                    <li ng-if="authentication.level == '1'" data-ng-hide="!authentication.isAuth"><a href="#/fileUpload">File Upload</a></li>
-                    <li ng-if="authentication.level == '0'" data-ng-hide="!authentication.isAuth"><a href="#/test">Test</a></li>
+                    <li ng-if="authentication.level == '1'" data-ng-hide="!authentication.isAuth"><a href="/fileUpload">File Upload</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/login"><span translate>Login</span></a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup"><span translate>Signup</span></a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="/login"><span translate>Login</span></a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="/signup"><span translate>Signup</span></a></li>
                     <li><a ng-click="setLanguage('en')">English</a></li>
                     <li><a ng-click="setLanguage('es')">Spanish</a></li>
                     <li><a ng-click="setLanguage('fr')">French</a></li>
@@ -74,7 +73,7 @@
     <script src="scripts/loading-bar.min.js"></script>
     <!-- Load app main script -->
     <script src="app/app.js"></script>
-   
+
     <script src="app/fileUpload/appInfo.js"></script>
     <script src="app/services/authInterceptorService.js"></script>
     <script src="app/services/authService.js"></script>
@@ -96,7 +95,7 @@
 
     <script src="app/services/tokensManagerService.js"></script>
     <script src="app/services/productService.js"></script>
-    
+
     <!-- Load controllers -->
     <!-- Load custom filters -->
     <script src="app/fileUpload/egAppStatus.js"></script>
@@ -107,7 +106,7 @@
     <script src="app/fileUpload/egUpload.js"></script>
     <script src="app/fileUpload/egPhotoUploader.js"></script>
     <script src="app/fileUpload/photoManagerClient.js"></script>
-    
+
     <!-- Load custom directives -->
 </body>
 </html>

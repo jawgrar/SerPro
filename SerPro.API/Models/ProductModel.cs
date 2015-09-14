@@ -14,5 +14,6 @@ namespace SerPro.API.Models
         public string Price { get; set; }
         public string description { get; set; }
         public string Picture { get; set; }
+        public byte[] PictureData { get; set; }
     }
 }

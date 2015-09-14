@@ -1,4 +1,4 @@
-﻿using SerPro.API.Infrastructure;
+﻿﻿using SerPro.API.Infrastructure;
 using SerPro.API.Models;
 using SerPro.Core.Entity;
 using System;
@@ -17,6 +17,39 @@ namespace SerPro.API.Controllers
     public class ProductController : ApiController
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
+
+        //GET: api/product
+        [HttpGet]
+        [Route("GetProduct")]
+        public IHttpActionResult GetProduct()
+        {
+            try
+            {
+                var objProduct = (from p in _dbContext.Product
+                                  join i in _dbContext.Image on p.ImageId equals i.ImageId
+                                  select new ProductModel { Name = p.Name, description = p.Desription, Price = p.Price.ToString(), PictureData = i.Photo }).ToList();
+
+                List<ProductModel> lstProductModel = new List<ProductModel>();
+
+                foreach (ProductModel productModel in objProduct)
+                {
+                    ProductModel objProductModel = new ProductModel();
+
+                    objProductModel.Name = productModel.Name;
+                    objProductModel.description = productModel.description;
+                    objProductModel.Price = productModel.Price;
+                    objProductModel.Picture = Convert.ToBase64String(productModel.PictureData, 0, productModel.PictureData.Length);
+
+                    lstProductModel.Add(objProductModel);
+                }
+
+                return Ok(lstProductModel);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.GetBaseException().Message);
+            }
+        }
 
         // POST: api/product
         [HttpPost]

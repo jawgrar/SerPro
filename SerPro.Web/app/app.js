@@ -1,65 +1,56 @@
 ﻿
 var app = angular.module('AngularAuthApp', ['ngResource', 'ngCookies', 'ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'pascalprecht.translate']);
 
-app.config(function ($routeProvider) {
+app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
 
-    $routeProvider.when("/home", {
+    $routeProvider.when("/", {
         controller: "homeController",
         templateUrl: "/app/views/home.html"
     });
 
     $routeProvider.when("/login", {
+    }).when("/login", {
         controller: "loginController",
         templateUrl: "/app/views/login.html"
-    });
-
-    $routeProvider.when("/signup", {
+    }).when("/signup", {
         controller: "signupController",
         templateUrl: "/app/views/signup.html"
-    });
-
-    $routeProvider.when("/orders", {
+    }).when("/orders", {
         controller: "ordersController",
         templateUrl: "/app/views/orders.html"
-    });
-
-    $routeProvider.when('/FileUpload', {
+    }).when('/FileUpload', {
         templateUrl: 'app/fileUpload/photos.html',
         controller: 'photos',
         controllerAs: 'vm',
         caseInsensitiveMatch: true
-    });
-
-    $routeProvider.when('/landing', {
+    }).when('/landing', {
         templateUrl: 'app/views/landing.html',
         controller: 'photos',
         controllerAs: 'vm',
         caseInsensitiveMatch: true
-    });
-
-    $routeProvider.when("/product", {
+    }).when("/product", {
         templateUrl: "app/views/product.html",
         controller: "productController"
-    });
-
-    $routeProvider.when("/refresh", {
+    }).when("/refresh", {
         controller: "refreshController",
         templateUrl: "/app/views/refresh.html"
-    });
-
-    $routeProvider.when("/tokens", {
+    }).when("/tokens", {
         controller: "tokensManagerController",
         templateUrl: "/app/views/tokens.html"
-    });
-
-    $routeProvider.when("/associate", {
+    }).when("/associate", {
         controller: "associateController",
         templateUrl: "/app/views/associate.html"
+    }).when("/productlist", {
+        controller: "productController",
+        templateUrl: "/app/views/productlist.html"
     });
 
-    $routeProvider.otherwise({ redirectTo: "/home" });
+    //$routeProvider.otherwise({ redirectTo: "/home" });
 
-});
+    $locationProvider.html5Mode(true);
+
+
+}]);
 
 var serviceBase = 'http://localhost:3846/';
 app.constant('ngAuthSettings', {

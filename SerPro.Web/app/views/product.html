@@ -1,6 +1,84 @@
-﻿
+﻿<div class="row" style="padding-top:20px">
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">Product</div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="title" class="col-md-2 control-label">Name</label>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="product.Name" name="Name" class="form-control" />
+                        </div>
+                    </div>
 
-<div class="row" style="padding-top:20px">
+                    <div class="form-group">
+                        <label for="description" class="col-md-2 control-label">Description</label>
+                        <div class="col-md-10">
+                            <textarea ng-model="product.description" name="description" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title" class="col-md-2 control-label">Price</label>
+                        <div class="col-md-10">
+                            <input type="number" ng-model="product.Price" name="Price" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attachment" class="col-md-2 control-label">Picture</label>
+                        <div class="col-md-10">
+                            <input type="file" name="Image" class="form-control" ng-model-instant onchange="angular.element(this).scope().imageUpload(event)" />
+                            <!--<input type="hidden" id="Attachment" name="Attachment" ng-model="product.Attachment" />-->
+                        </div>
+                    </div>
+
+                    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveProduct()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><div class="row" style="padding-top:20px">
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">Product</div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="title" class="col-md-2 control-label">Name</label>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="product.Name" name="Name" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-md-2 control-label">Description</label>
+                        <div class="col-md-10">
+                            <textarea ng-model="product.description" name="description" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title" class="col-md-2 control-label">Price</label>
+                        <div class="col-md-10">
+                            <input type="number" ng-model="product.Price" name="Price" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attachment" class="col-md-2 control-label">Picture</label>
+                        <div class="col-md-10">
+                            <input type="file" name="Image" class="form-control" ng-model-instant onchange="angular.element(this).scope().imageUpload(event)" />
+                            <!--<input type="hidden" id="Attachment" name="Attachment" ng-model="product.Attachment" />-->
+                        </div>
+                    </div>
+
+                    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="saveProduct()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><div class="row" style="padding-top:20px">
     <div class="col-md-6">
         <div class="panel panel-info">
             <div class="panel-heading">Product</div>

@@ -2,6 +2,8 @@
 app.controller('productController', ["$q", "$scope", "$http",
    function ($q, $scope, $http) {
 
+       $scope.productList = [];
+
        $scope.picture = '';
 
        $scope.product = {
@@ -10,6 +12,20 @@ app.controller('productController', ["$q", "$scope", "$http",
            Price: "",
            Picture: ""
        };
+
+       $scope.loadPeople = function () {
+           var httpRequest = $http({
+               method: 'GET',
+               url: 'http://localhost:3846/api/product/GetProduct',
+               data: {}
+
+           }).success(function (data, status) {
+               $scope.productList = data;
+           });
+
+       };
+
+       $scope.loadPeople();
 
        $scope.saveProduct = function () {
            // var data = { 'obj': $scope.attachments }
