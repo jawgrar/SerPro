@@ -18,9 +18,9 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         authService.login($scope.loginData).then(function (response) {
             if (response.level == '1') {
-                $location.path('/fileUpload');
+                $location.path('/product');
             } else {
-                $location.path('/landing');
+                $location.path('/productlist');
             }
 
         },

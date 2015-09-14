@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Image.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\PictureView.cs" />
     <Compile Include="Enums\RoleType.cs" />

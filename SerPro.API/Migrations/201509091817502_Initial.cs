@@ -8,6 +8,29 @@ namespace SerPro.API.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Images",
+                c => new
+                    {
+                        ImageId = c.Int(nullable: false, identity: true),
+                        Photo = c.Binary(),
+                    })
+                .PrimaryKey(t => t.ImageId);
+            
+            CreateTable(
+                "dbo.Products",
+                c => new
+                    {
+                        ProductId = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Price = c.Double(nullable: false),
+                        Desription = c.String(),
+                        ImageId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ProductId)
+                .ForeignKey("dbo.Images", t => t.ImageId, cascadeDelete: true)
+                .Index(t => t.ImageId);
+            
+            CreateTable(
                 "dbo.Roles",
                 c => new
                     {
@@ -89,15 +112,19 @@ namespace SerPro.API.Migrations
             DropForeignKey("dbo.UserLogins", "UserMaster_Id", "dbo.UserMaster");
             DropForeignKey("dbo.UserClaims", "UserMaster_Id", "dbo.UserMaster");
             DropForeignKey("dbo.UserRoles", "IdentityRole_Id", "dbo.Roles");
+            DropForeignKey("dbo.Products", "ImageId", "dbo.Images");
             DropIndex("dbo.UserLogins", new[] { "UserMaster_Id" });
             DropIndex("dbo.UserClaims", new[] { "UserMaster_Id" });
             DropIndex("dbo.UserRoles", new[] { "UserMaster_Id" });
             DropIndex("dbo.UserRoles", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Products", new[] { "ImageId" });
             DropTable("dbo.UserLogins");
             DropTable("dbo.UserClaims");
             DropTable("dbo.UserMaster");
             DropTable("dbo.UserRoles");
             DropTable("dbo.Roles");
+            DropTable("dbo.Products");
+            DropTable("dbo.Images");
         }
     }
 }

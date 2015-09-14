@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using SerPro.API.Models;
+using SerPro.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -35,6 +36,7 @@ namespace SerPro.API.Infrastructure
             modelBuilder.Entity<IdentityUserClaim>().HasKey<string>(l => l.UserId).ToTable("UserClaims");
             modelBuilder.Entity<IdentityRole>().ToTable("Roles");
         }
-        //public DbSet<Product> Product { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Image> Image { get; set; }
     }
 }

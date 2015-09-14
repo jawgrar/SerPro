@@ -57,61 +57,63 @@ function photoManager($q, photoManagerClient, appInfo) {
         return photoManagerClient.save(formData)
                                     .$promise
                                     .then(function (result) {
-                                        if (result && result.photos) {
-                                            result.photos.forEach(function (photo) {
-                                                if (!photoExists(photo.name)) {
-                                                    service.photos.push(photo);
-                                                }
-                                            });
-                                        }
+                                        if (result) {
+                                            if (result && result.photos) {
+                                                result.photos.forEach(function (photo) {
+                                                    if (!photoExists(photo.name)) {
+                                                        service.photos.push(photo);
+                                                    }
+                                                });
 
-                                        appInfo.setInfo({ message: "photos uploaded successfully" });
+                                            }
 
-                                        return result.$promise;
-                                    },
-                                    function (result) {
-                                        appInfo.setInfo({ message: "something went wrong: " + result.data.message });
-                                        return $q.reject(result);
-                                    })
-                                    ['finally'](
-                                    function () {
-                                        appInfo.setInfo({ busy: false });
-                                        service.status.uploading = false;
-                                    });
+                                            appInfo.setInfo({ message: "photos uploaded successfully" });
+
+                                            return result.$promise;
+                                        },
+                                        function (result) {
+                                            appInfo.setInfo({ message: "something went wrong: " + result.data.message });
+                                            return $q.reject(result);
+                                        })
+                                        ['finally'](
+                                        function () {
+                                            appInfo.setInfo({ busy: false });
+                                            service.status.uploading = false;
+                                        });
+                                    }
+
+        function remove(photo) {
+            appInfo.setInfo({ busy: true, message: "deleting photo " + photo.name });
+
+            return photoManagerClient.remove({ fileName: photo.name })
+                                        .$promise
+                                        .then(function (result) {
+                                            //if the photo was deleted successfully remove it from the photos array
+                                            var i = service.photos.indexOf(photo);
+                                            service.photos.splice(i, 1);
+
+                                            appInfo.setInfo({ message: "photos deleted" });
+
+                                            return result.$promise;
+                                        },
+                                        function (result) {
+                                            appInfo.setInfo({ message: "something went wrong: " + result.data.message });
+                                            return $q.reject(result);
+                                        })
+                                        ['finally'](
+                                        function () {
+                                            appInfo.setInfo({ busy: false });
+                                        });
+        }
+
+        function photoExists(photoName) {
+            var res = false
+            service.photos.forEach(function (photo) {
+                if (photo.name === photoName) {
+                    res = true;
+                }
+            });
+
+            return res;
+        }
     }
-
-    function remove(photo) {
-        appInfo.setInfo({ busy: true, message: "deleting photo " + photo.name });
-
-        return photoManagerClient.remove({ fileName: photo.name })
-                                    .$promise
-                                    .then(function (result) {
-                                        //if the photo was deleted successfully remove it from the photos array
-                                        var i = service.photos.indexOf(photo);
-                                        service.photos.splice(i, 1);
-
-                                        appInfo.setInfo({ message: "photos deleted" });
-
-                                        return result.$promise;
-                                    },
-                                    function (result) {
-                                        appInfo.setInfo({ message: "something went wrong: " + result.data.message });
-                                        return $q.reject(result);
-                                    })
-                                    ['finally'](
-                                    function () {
-                                        appInfo.setInfo({ busy: false });
-                                    });
-    }
-
-    function photoExists(photoName) {
-        var res = false
-        service.photos.forEach(function (photo) {
-            if (photo.name === photoName) {
-                res = true;
-            }
-        });
-
-        return res;
-    }
-}
