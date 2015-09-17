@@ -17,7 +17,7 @@ app.controller('indexController', ['$scope', '$cookies', '$location', 'authServi
 
     $scope.logOut = function () {
         authService.logOut();
-        $location.path('/home');
+        $location.path('/');
     }
 
     $scope.authentication = authService.authentication;
