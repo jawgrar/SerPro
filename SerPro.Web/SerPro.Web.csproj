@@ -112,6 +112,7 @@
     <Content Include="app\views\landing.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\product.html" />
+    <Content Include="app\views\productlist.html" />
     <Content Include="app\views\refresh.html" />
     <Content Include="app\views\signup.html" />
     <Content Include="app\views\tokens.html" />

@@ -203,9 +203,9 @@
     <Compile Include="Infrastructure\ClaimsAuthorizationAttribute.cs" />
     <Compile Include="Infrastructure\ExtendedClaimsProvider.cs" />
     <Compile Include="Infrastructure\RolesFromClaims.cs" />
-    <Compile Include="Migrations\201509091817502_Initial.cs" />
-    <Compile Include="Migrations\201509091817502_Initial.Designer.cs">
-      <DependentUpon>201509091817502_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201509172040374_Initial.cs" />
+    <Compile Include="Migrations\201509172040374_Initial.Designer.cs">
+      <DependentUpon>201509172040374_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -249,8 +249,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509091817502_Initial.resx">
-      <DependentUpon>201509091817502_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509172040374_Initial.resx">
+      <DependentUpon>201509172040374_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.es.resx" />
     <EmbeddedResource Include="Resources\Resources.fr.resx" />
