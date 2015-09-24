@@ -23,6 +23,9 @@ namespace SerPro.API
 
     public class Startup
     {
+
+        private string _ServiceUrl = ConfigurationManager.AppSettings["ServiceUrl"];
+
         public void Configuration(IAppBuilder app)
         {
             HttpConfiguration httpConfig = new HttpConfiguration();
@@ -53,7 +56,7 @@ namespace SerPro.API
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 Provider = new CustomOAuthProvider(),
-                AccessTokenFormat = new CustomJwtFormat("http://localhost:3846")
+                AccessTokenFormat = new CustomJwtFormat(_ServiceUrl)
             };
 
             // OAuth 2.0 Bearer Access Token Generation
@@ -63,8 +66,7 @@ namespace SerPro.API
         private void ConfigureOAuthTokenConsumption(IAppBuilder app)
         {
 
-            var issuer = "http://localhost:3846";
-            string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
+           string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
             byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["as:AudienceSecret"]);
 
             // Api controllers with an [Authorize] attribute will be validated with JWT
@@ -75,7 +77,7 @@ namespace SerPro.API
                     AllowedAudiences = new[] { audienceId },
                     IssuerSecurityTokenProviders = new IIssuerSecurityTokenProvider[]
                     {
-                        new SymmetricKeyIssuerSecurityTokenProvider(issuer, audienceSecret)
+                        new SymmetricKeyIssuerSecurityTokenProvider(_ServiceUrl, audienceSecret)
                     }
                 });
         }

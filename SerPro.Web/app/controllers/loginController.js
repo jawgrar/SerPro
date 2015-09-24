@@ -17,12 +17,12 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
     $scope.login = function () {
 
         authService.login($scope.loginData).then(function (response) {
-            if (response.level == '1') {
-                $location.path('/product');
-            } else {
-                $location.path('/productlist');
-            }
-
+            //if (response.level == '1') {
+            //    $location.path('/product');
+            //} else {
+            //    $location.path('/productlist');
+            //}
+            $location.path('/homePage');
         },
          function (err) {
              $scope.message = err.error_description;

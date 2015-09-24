@@ -15,6 +15,11 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
 
     //init();
 
+    $scope.loginData = {
+        userName: "",
+        password: ""
+    };
+
     $scope.savedSuccessfully = false;
     $scope.message = "";
 
@@ -32,7 +37,7 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         authService.saveRegistration($scope.registration).then(function (response) {
 
             $scope.savedSuccessfully = true;
-            $scope.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
+            $scope.message = "User has been registered successfully, you will be redicted to home page in 2 seconds.";
             startTimer();
 
         },
@@ -49,8 +54,23 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
 
     var startTimer = function () {
         var timer = $timeout(function () {
+
+            $scope.loginData.userName = $scope.registration.userName;
+            $scope.loginData.password = $scope.registration.password;
+
             $timeout.cancel(timer);
-            $location.path('/login');
+            authService.login($scope.loginData).then(function (response) {
+
+                //if (response.level == '1') {
+                //    $location.path('/product');
+                //} else {
+                //    $location.path('/productlist');
+                //}
+                $location.path('/homePage');
+            },
+              function (err) {
+                  $scope.message = err.error_description;
+              });
         }, 2000);
     }
 
