@@ -10,11 +10,14 @@ app.factory('authInterceptorService', ['$q', '$rootScope', '$injector', '$locati
         var authData = localStorageService.get('authorizationData');
         if (authData != null) {
             //if (next.$$route.originalPath == '/fileUpload') {
-            if (response.level == '1') {
-                $location.path('/product');
+            if (authData.level == '1') {
+                next.$$route.originalPath;
             } else {
-                $location.path('/productlist');
+                $location.path('/homePage');
             }
+        }
+        else {
+            $location.path('/login');
         }
 
     });

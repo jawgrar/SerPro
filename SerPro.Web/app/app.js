@@ -3,52 +3,52 @@ var app = angular.module('AngularAuthApp', ['ngResource', 'ngCookies', 'ngRoute'
 
 app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
 
-    $routeProvider.when("/", {
+    $routeProvider.when("/home", {
         controller: "homeController",
         templateUrl: "/app/views/home.html"
     });
 
     $routeProvider.when("/login", {
-    }).when("/login", {
         controller: "loginController",
         templateUrl: "/app/views/login.html"
-    }).when("/signup", {
-        controller: "signupController",
-        templateUrl: "/app/views/signup.html"
-    }).when("/orders", {
-        controller: "ordersController",
-        templateUrl: "/app/views/orders.html"
-    }).when('/FileUpload', {
-        templateUrl: 'app/fileUpload/photos.html',
-        controller: 'photos',
-        controllerAs: 'vm',
-        caseInsensitiveMatch: true
-    }).when('/landing', {
-        templateUrl: 'app/views/landing.html',
-        controller: 'photos',
-        controllerAs: 'vm',
-        caseInsensitiveMatch: true
-    }).when("/product", {
-        templateUrl: "app/views/product.html",
-        controller: "productController"
-    }).when("/refresh", {
-        controller: "refreshController",
-        templateUrl: "/app/views/refresh.html"
-    }).when("/tokens", {
-        controller: "tokensManagerController",
-        templateUrl: "/app/views/tokens.html"
-    }).when("/associate", {
-        controller: "associateController",
-        templateUrl: "/app/views/associate.html"
-    }).when("/productlist", {
-        controller: "productController",
-        templateUrl: "/app/views/productlist.html"
     });
 
-    //$routeProvider.otherwise({ redirectTo: "/home" });
+    $routeProvider.when("/signup", {
+        controller: "signupController",
+        templateUrl: "/app/views/signup.html"
+    });
 
-    $locationProvider.html5Mode(true);
+    $routeProvider.when("/orders", {
+        controller: "ordersController",
+        templateUrl: "/app/views/orders.html"
+    });
 
+    $routeProvider.when("/refresh", {
+        controller: "refreshController",
+        templateUrl: "/app/views/refresh.html"
+    });
+
+    $routeProvider.when("/tokens", {
+        controller: "tokensManagerController",
+        templateUrl: "/app/views/tokens.html"
+    });
+
+    $routeProvider.when("/associate", {
+        controller: "associateController",
+        templateUrl: "/app/views/associate.html"
+    });
+
+    $routeProvider.when("/homePage", {
+        controller: "productController",
+        templateUrl: "/app/views/homePage.html"
+    });
+
+    $routeProvider.when("/product", {
+        templateUrl: "app/views/product.html",
+        controller: "productController"
+    });
+
+    $routeProvider.otherwise({ redirectTo: "/home" });
 
 }]);
 

@@ -40,7 +40,7 @@ namespace SerPro.API.Controllers
                 return GetErrorResult(addUserResult);
             }
 
-            return Ok();
+            return Ok(createUserModel);
         }
 
         [AllowAnonymous]

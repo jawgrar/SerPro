@@ -1,6 +1,8 @@
 ﻿'use strict';
-app.controller('productController', ["$q", "$scope", "$http",
-   function ($q, $scope, $http) {
+app.controller('productController', ["$q", "$scope", "$http", 'ngAuthSettings',
+   function ($q, $scope, $http, ngAuthSettings) {
+
+       var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
        $scope.productList = [];
 
@@ -16,7 +18,7 @@ app.controller('productController', ["$q", "$scope", "$http",
        $scope.loadPeople = function () {
            var httpRequest = $http({
                method: 'GET',
-               url: 'http://localhost:3846/api/product/GetProduct',
+               url: serviceBase + 'api/product/GetProduct',
                data: {}
 
            }).success(function (data, status) {
@@ -33,7 +35,7 @@ app.controller('productController', ["$q", "$scope", "$http",
            $scope.product.Picture = $scope.Picture;
            //$scope.tutorial.Price = "test";
            var deferred = $q.defer();
-           $http.post('http://localhost:3846/api/Product/post', $scope.product).success(function (response) {
+           $http.post(serviceBase + 'api/Product/post', $scope.product).success(function (response) {
 
            }).error(function (err, status) {
                deferred.reject(err);
