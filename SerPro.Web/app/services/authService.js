@@ -10,7 +10,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         useRefreshTokens: false,
         level: "",
         firstname: "",
-        lastname: ""
+        lastname: "",
+        issignupPage: false
     };
 
     var _externalAuthData = {

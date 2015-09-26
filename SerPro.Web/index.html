@@ -32,14 +32,18 @@
                     <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
                     <!--<li data-ng-hide="!authentication.isAuth"><a href="#/orders">My Orders</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="#/refresh">Refresh Token</a></li>-->
-
-                    <li ng-if="authentication.level == '1'" data-ng-hide="!authentication.isAuth"><a href="#/product">Product</a></li>
+                    <!--<li ng-if="authentication.level == '1'" data-ng-hide="!authentication.isAuth"><a href="#/product">Product</a></li>-->
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login"><span translate>Login</span></a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup"><span translate>Signup</span></a></li>
-                    <li><a ng-click="setLanguage('en')">English</a></li>
-                    <li><a ng-click="setLanguage('es')">Spanish</a></li>
-                    <li><a ng-click="setLanguage('fr')">French</a></li>
+                    <li ng-if="!authentication.issignupPage" data-ng-hide="authentication.isAuth"> <a href="#/signup"><span translate>Signup</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Select Language<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="setLanguage('en')">English</a></li>
+                            <li><a ng-click="setLanguage('es')">Spanish</a></li>
+                            <li><a ng-click="setLanguage('fr')">French</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </div>
@@ -107,6 +111,12 @@
     <script src="app/fileUpload/egPhotoUploader.js"></script>
     <script src="app/fileUpload/photoManagerClient.js"></script>
 
+    <script type="text/javascript">
+        $(".dropdown-menu li a").click(function () {
+            var selText = $(this).text();
+            $(this).closest('ul').parents('li').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+        });
+    </script>
     <!-- Load custom directives -->
 </body>
 </html>

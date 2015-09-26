@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', function ($scope, $location, authService, ngAuthSettings) {
 
-
+    authService.authentication.issignupPage = false;
 
     $scope.loginData = {
         userName: "",

@@ -1,11 +1,16 @@
 ﻿'use strict';
-app.controller('productController', ["$q", "$scope", "$http", 'ngAuthSettings',
-   function ($q, $scope, $http, ngAuthSettings) {
+app.controller('productController', ["$q", "$scope", "$http", 'ngAuthSettings', 'authService',
+   function ($q, $scope, $http, ngAuthSettings, authService) {
+
+       $scope.isProvider = false;
+
+       if (authService.authentication.level == "1") {
+           $scope.isProvider = true;
+       }
 
        var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
        $scope.productList = [];
-
        $scope.picture = '';
 
        $scope.product = {
@@ -23,6 +28,8 @@ app.controller('productController', ["$q", "$scope", "$http", 'ngAuthSettings',
 
            }).success(function (data, status) {
                $scope.productList = data;
+
+
            });
 
        };
@@ -36,7 +43,7 @@ app.controller('productController', ["$q", "$scope", "$http", 'ngAuthSettings',
            //$scope.tutorial.Price = "test";
            var deferred = $q.defer();
            $http.post(serviceBase + 'api/Product/post', $scope.product).success(function (response) {
-
+               alert("Product added successfully.");
            }).error(function (err, status) {
                deferred.reject(err);
            });
@@ -45,13 +52,20 @@ app.controller('productController', ["$q", "$scope", "$http", 'ngAuthSettings',
        };
 
        $scope.imageUpload = function (event) {
+
            var files = event.target.files; //FileList object
 
-           for (var i = 0; i < files.length; i++) {
-               var file = files[i];
-               var reader = new FileReader();
-               reader.onload = $scope.imageIsLoaded;
-               reader.readAsDataURL(file);
+           if (/^image/.test(files[0].type)) {
+
+               for (var i = 0; i < files.length; i++) {
+                   var file = files[i];
+                   var reader = new FileReader();
+                   reader.onload = $scope.imageIsLoaded;
+                   reader.readAsDataURL(file);
+               }
+           }
+           else {
+               alert("Only .png, .jpg, .gif and .tif image formate support.");
            }
        }
 
@@ -59,7 +73,6 @@ app.controller('productController', ["$q", "$scope", "$http", 'ngAuthSettings',
            $scope.$apply(function () {
                $scope.Picture = e.target.result;
                //$('#Attachment').val(e.target.result);
-
                //$scope.stepsModel.push(e.target.result);
            });
        }
