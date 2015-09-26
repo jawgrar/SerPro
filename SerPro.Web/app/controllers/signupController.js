@@ -1,6 +1,9 @@
 ﻿'use strict';
 app.controller('signupController', ['$scope', '$location', '$timeout', 'authService', '$translate', function ($scope, $location, $timeout, authService, $translate) {
 
+
+    authService.authentication.issignupPage = true;
+
     //$scope.setLanguage = setLanguage;
 
     //function setLanguage(lang) {

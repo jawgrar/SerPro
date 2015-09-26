@@ -16,9 +16,9 @@ app.factory('authInterceptorService', ['$q', '$rootScope', '$injector', '$locati
                 $location.path('/homePage');
             }
         }
-        else {
-            $location.path('/login');
-        }
+        //else {
+        //    $location.path('/login');
+        //}
 
     });
 

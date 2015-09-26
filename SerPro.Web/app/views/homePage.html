@@ -2,16 +2,60 @@
     <div class="col-md-2">
         &nbsp;
     </div>
-    <div class="col-md-4">
-        <h2 class="form-login-heading">Product List</h2>
-        <div class="col-md-8">
-            <table class="table table-striped table-bordered table-hover">
+    <div class="col-md-12">
+        <div ng-show="isProvider" class="col-md-2" style="padding-bottom: 10px;">
+            <!--<h2 class="form-login-heading">Product List</h2>-->
+            <a href="#/product" class="btn btn-info btn-lg"><span translate>Productadd</span></a>
+        </div>
+        <div class="col-md-12">
+
+            <div class="panel panel-info">
+                <div class="panel-heading"><span translate>Product</span></div>
+
+                <div data-ng-repeat="product in productList" class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="title" class="col-md-2 control-label"><span translate>Name</span></label>
+                            <div class="col-md-10">
+                                <!--<input type="text" ng-model="product.Name" name="Name" class="form-control" />-->
+                                {{ product.name }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description" class="col-md-2 control-label"><span translate>Description</span></label>
+                            <div class="col-md-10">
+                                <!--<textarea ng-model="product.description" name="description" class="form-control"></textarea>-->
+                                {{ product.description }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title" class="col-md-2 control-label"><span translate>Price</span></label>
+                            <div class="col-md-10">
+                                <!--<input type="number" ng-model="product.Price" name="Price" class="form-control" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required />-->
+                                {{ product.price }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="attachment" class="col-md-2 control-label"><span translate>Picture</span></label>
+                            <div class="col-md-10">
+                                <img src="data:image/jpeg;base64,{{product.picture}}" alt="pic" />
+                            </div>
+                        </div>
+                    </form>
+                    <hr />
+                </div>
+            </div>
+
+            <!--<table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>Product Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Image</th>
+                        <th><span translate>Name</span></th>
+                        <th><span translate>Description</span></th>
+                        <th><span translate>Price</span></th>
+                        <th><span translate>Picture</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +74,7 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table>-->
         </div>
         <div class="col-md-2">
             &nbsp;

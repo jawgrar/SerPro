@@ -62,6 +62,8 @@ namespace SerPro.API.Controllers
 
                 img = objProductModel.Picture.Replace("data:image/png;base64,", "");
                 img = objProductModel.Picture.Replace("data:image/jpeg;base64,", "");
+                img = objProductModel.Picture.Replace("data:image/tiff;base64,", "");
+                img = objProductModel.Picture.Replace("data:image/gif;base64,", "");
 
                 byte[] bytes = Convert.FromBase64String(img);
 
